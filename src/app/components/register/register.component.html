@@ -1,0 +1,63 @@
+<section class="register">
+    <div class="header">
+        <h3>Sign up</h3>
+        <p>It's quick and easy</p>
+    </div>
+
+    <div class="body">
+        <form [formGroup]="form">
+            <div class="email_password">
+                <mat-label>First name</mat-label>
+                <input type="text" placeholder="First name" formControlName="firstName" required>
+                <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                    <p *ngIf="firstName.errors.required">First name is <strong>required</strong></p>
+                    <p *ngIf="firstName.errors.minlength">First name must have at least 3 characters</p>
+                    <p *ngIf="firstName.errors.maxlength">First name must have a maximum of 30 characters</p>
+                    <p
+                        *ngIf="(firstName.dirty || firstName.touched) && firstName.invalid && firstName.errors.pattern">
+                        First name must have only letters
+                    </p>
+                </mat-error>
+
+                <mat-label>Last name</mat-label>
+                <input type="text" placeholder="Last name" formControlName="lastName" required>
+                <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                    <p *ngIf="lastName.errors.required">Last name is <strong>required</strong></p>
+                    <p *ngIf="lastName.errors.minlength">Last name must have at least 3 characters</p>
+                    <p *ngIf="lastName.errors.maxlength">Last name must have a maximum of 30 characters</p>
+                    <p
+                        *ngIf="(lastName.dirty || lastName.touched) && lastName.invalid && lastName.errors.pattern">
+                        Last name must have only letters
+                    </p>
+                </mat-error>
+
+                <mat-label>User name</mat-label>
+                <input type="text" placeholder="User name" formControlName="userName" required>
+                <mat-error *ngIf="userName.invalid && (userName.dirty || userName.touched)">
+                    <p *ngIf="userName.errors.required">User name is <strong>required</strong></p>
+                    <p *ngIf="userName.errors.minlength">User name must have at least 3 characters</p>
+                    <p *ngIf="userName.errors.maxlength">User name must have a maximum of 30 characters</p>
+                    <p
+                        *ngIf="(userName.dirty || userName.touched) && userName.invalid && userName.errors.pattern">
+                        User name must have only letters
+                    </p>
+                </mat-error>
+
+                <mat-label>Password</mat-label>
+                <input type="password" placeholder="Password" formControlName="password" required>
+                <mat-error *ngIf="password.invalid && (userName.dirty || userName.touched)">
+                    <p *ngIf="password.errors.required">Password is <strong>required</strong></p>
+                    <p *ngIf="password.errors.minlength">Password must have at least 3 characters</p>
+                    <p *ngIf="password.errors.maxlength">Password must have a maximum of 30 characters</p>
+                    <p
+                        *ngIf="(password.dirty || password.touched) && password.invalid && password.errors.pattern">
+                        Password must have only letters
+                    </p>
+                </mat-error>
+            </div>
+            <p>By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy. You may receive SMS
+                notifications from us and can opt out at any time.</p>
+            <button type="button" class="submit-button" (click)="save()" [disabled]="!form.valid">Sign Up</button>
+        </form>
+    </div>
+</section>

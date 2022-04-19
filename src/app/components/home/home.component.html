@@ -1,0 +1,145 @@
+<div class="home-container">
+  <div class="home_header">
+    <div class="home_header_left">
+      <img mat-card-avatar src="assets/icon-pn.png" />
+      <div class="input">
+        <mat-icon class="search-icon">search_outline</mat-icon>
+        <form>
+          <input placeholder="Search Post Notice" type="text">
+        </form>
+      </div>
+
+    </div>
+    <div class="home_header_middle">
+      <div class="active">
+        <mat-icon>home</mat-icon>
+      </div>
+      <div>
+        <mat-icon>ondemand_video</mat-icon>
+      </div>
+    </div>
+    <div class="home_header_right">
+      <div>
+        <span class="name">{{ userName }}</span>
+      </div>
+
+      <div>
+        <mat-icon matBadge="3" matBadgeColor="warn" matBadgeOverlap="false">notifications
+        </mat-icon>
+      </div>
+
+      <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>perm_contact_calendar</mat-icon>
+            <span>Edit profile</span>
+          </button>
+          <button mat-menu-item (click)="signOut()">
+            <mat-icon>logout</mat-icon>
+            <span>Sign out</span>
+          </button>
+        </mat-menu>
+      </div>
+
+    </div>
+  </div>
+  <div class="home-informaction">
+    <div class="triple-column">
+      <div class="home_body_sidebarLeft">
+        <div class="user-avatar">
+          {{ userName}}
+        </div>
+        <div class="menuItem">
+          <mat-icon> local_hospital</mat-icon>
+          <span class="covid">COVID-19 Information</span>
+        </div>
+
+        <div class="menuItem">
+          <mat-icon>flag</mat-icon>
+          <span>Pages</span>
+        </div>
+
+        <div class="menuItem">
+          <mat-icon>people</mat-icon>
+          <span>Friends</span>
+        </div>
+
+        <div class="menuItem">
+          <mat-icon> chat</mat-icon>
+          <span>Messenger</span>
+        </div>
+
+        <div class="menuItem">
+          <mat-icon>store</mat-icon>
+          <span>Marketplace</span>
+        </div>
+
+        <div class="menuItem">
+          <mat-icon>video_library</mat-icon>
+          <span>Videos</span>
+        </div>
+
+        <div class="menuItem">
+          <mat-icon class="see-more">expand_more</mat-icon>
+          <span>See More</span>
+        </div>
+      </div>
+
+      <mat-card class="post-message">
+        <mat-card-header class="post-message-header">
+          <div class="progress-bar" [hidden]="hideprogressBar">
+            <mat-progress-bar color="primary" mode="determinate" [value]="percentDone">
+            </mat-progress-bar>
+          </div>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>{{fileName}}</mat-label>
+            <ng-template #newFile>
+                <mat-label>Choose file</mat-label>
+            </ng-template>
+            <input matInput disabled>
+            <button mat-icon-button matSuffix (click)="fileInput.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+            <input hidden (change)="onSelectFile($event)" #fileInput multiple name="uploadfile" type="file" id="file">
+          </mat-form-field>        
+
+          <button mat-raised-button color="primary" (click)="onUploadClick()" style="height: 50px;margin-top: 3px;margin-left: 3px;">Upload</button>
+        </mat-card-header>
+        <mat-card-subtitle style="border-bottom: 1px solid lightgray;">
+          <div class="imgConteiner">
+            <div class="four-column">
+              <div *ngFor="let image of selectedFiles">
+                <img [src]="image.value">
+              </div>
+            </div>
+          </div>
+        </mat-card-subtitle>
+        <mat-card-content class="card-body">
+          <div class="card-menus">
+            <div>
+              <mat-icon color="accent">videocam</mat-icon>
+              <span>Live Video</span>
+            </div>
+
+            <div>
+              <mat-icon color="primary">photo_album</mat-icon>
+              <span>Photo/Video</span>
+            </div>
+
+            <div>
+              <mat-icon color="warn">mood</mat-icon>
+              <span>Feeling/Activity</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <div></div>
+
+    </div>
+  </div>
+</div>

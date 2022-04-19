@@ -1,0 +1,32 @@
+<div class="login-container">
+  <header class="login_header">
+    <div class="login_header_left">
+      <img src="assets/postNotice.png">
+      <h2>Post Notice helps you connect and share with the people in your life.</h2>
+
+    </div>
+    <div class="login_header_right">
+      <mat-card class="login_header_right_card">
+        <mat-card-content class="login_header_right_card_content">
+          <form class="login-form" [formGroup]="form">
+            <label for="userName">User name</label>
+            <input name="userName" formControlName="userName" type="text" />
+            <label for="password">Password</label>
+            <input name="password" formControlName="password" type="password" />
+
+            <button mat-button color="primary" class="login-button" (click)="login()">Log in</button>
+          </form>
+          <a>Forgot password?</a>
+          <button class="create-account" mat-button (click)="openRegister()">Create new account</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </header>
+</div>
+<ng-template #dialogRegister let-mydata>
+  <h5>Hi I am Template Dialog following Foo list:</h5>
+  <ul *ngIf="mydata">
+    <li *ngFor="let item of mydata">{{item}}</li>
+  </ul>
+  <button mat-button mat-dialog-close="I am from dialog land...">Close</button>
+</ng-template>
