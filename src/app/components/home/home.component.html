@@ -118,22 +118,18 @@
             </div>
           </div>
         </mat-card-subtitle>
+        
         <mat-card-content class="card-body">
+
+          <mat-form-field style="width: 100%; height: 70px;" class="example-full-width" appearance="fill">
+            <mat-label>Post Notice</mat-label>
+            <textarea matInput placeholder="please describe your news"></textarea>
+          </mat-form-field>
+
           <div class="card-menus">
-            <div>
-              <mat-icon color="accent">videocam</mat-icon>
-              <span>Live Video</span>
-            </div>
-
-            <div>
-              <mat-icon color="primary">photo_album</mat-icon>
-              <span>Photo/Video</span>
-            </div>
-
-            <div>
-              <mat-icon color="warn">mood</mat-icon>
-              <span>Feeling/Activity</span>
-            </div>
+ 
+    <button mat-button color="accent" (click)="saveBulletin()" >Save Bulletin</button>
+   
           </div>
         </mat-card-content>
       </mat-card>

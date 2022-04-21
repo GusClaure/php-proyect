@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serUrl: 'https://6c81-181-188-165-111.ngrok.io/',
+  serUrl: 'http://localhost:9001',
 };
 
 /*

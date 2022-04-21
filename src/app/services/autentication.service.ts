@@ -26,10 +26,11 @@ export class AutenticationService {
   }
 
   login(loginuser: Login): Observable<Login> {
-    return this.httpClient.post<Login>(this.API_URL + 'auth/login', loginuser);
+    return this.httpClient.post<Login>(this.API_URL + '/users/auth/login', loginuser);
   }
+  
   registerUser(registeruser: Register): Observable<Register> {
-    return this.httpClient.post<Register>(this.API_URL + 'users/save', registeruser);
+    return this.httpClient.post<Register>(this.API_URL + '/users/save', registeruser);
   }
   getLoggedInUser() {
     var autent = JSON.parse(localStorage.getItem('Autentication'));
@@ -38,6 +39,6 @@ export class AutenticationService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${auth_token}`
     });
-    return this.httpClient.get(this.API_URL + 'auth/me', { headers: reqHeader });
+    return this.httpClient.get(this.API_URL + '/users/auth/me', { headers: reqHeader });
   }
 }

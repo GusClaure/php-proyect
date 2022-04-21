@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
 
   save() {    
     if (this.form.valid) { 
-      console.log('formulario', this.form.value);
       this.srvAut.registerUser(this.form.value).subscribe(data=> {
         console.log('data=', data);
         if(data['status'] == true) {

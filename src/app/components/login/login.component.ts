@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.formulario();
   }
+
   formulario() {
     const userCount = "gclaure_4";
     this.form = this.formBuilder.group({
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
       password: ["",[Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
     });
   }
+  
   login() {
     if (this.form.valid) { 
       console.log('valor form=', this.form.value);

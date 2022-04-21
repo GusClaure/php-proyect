@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   percentDone: number = 0;
   selectedFiles: IFile[] = [];
   formData: FormData = new FormData();
+  urlFile: String;
+
   @ViewChild("imageContainer") imageContainer: ElementRef;
   constructor(
     private router: Router,
@@ -65,18 +67,24 @@ export class HomeComponent implements OnInit {
     })
     return name;
   }
+
+
+  public files: any = [];
+
+
+
   onSelectFile(event: any) {
 
-    Array.from(event.target.files).forEach((file: any) => {
-      //this.formData.append(file.name, file);
-      //get Base64 string    
+  
+    Array.from(event.target.files).forEach((file: any) => {  
+      this.formData.append('file', file);
       this.getBase64(file, (res: any) => {
-        this.formData.append(file.name, res);
-        // display image preview
         this.selectedFiles.push({ name: file.name, value: res });
       })
       console.log('imagen=', this.selectedFiles);
     });
+
+
   }
 
   getBase64(file: any, callBack: any) {
@@ -91,25 +99,28 @@ export class HomeComponent implements OnInit {
 
     };
   }
-  onUploadClick() {
-    this.hideprogressBar = false;
-    console.log('Entre al click');
-    this.srvPostNotice.uploadFile(this.formData).subscribe((res: any) => {
-      if (res.type === HttpEventType.Response) {
-        this.snackbar.open('Upload complete', "Okay", { duration: 5000 });
-      }
-      if (res.type === HttpEventType.UploadProgress) {
-        this.percentDone = Math.round(100 * res.loaded / res.total);
-      }
 
-    })
-    /*this.fileUploadService.uploadFile(this.formData).subscribe((res: any) => {
+  onUploadClick() {
+    this.hideprogressBar = true;
+    this.srvPostNotice.uploadFile(this.formData).subscribe((res) => {
+      console.log(res['fileUrl']);
       if (res.type === HttpEventType.Response) {
+          
         this.snackbar.open('Upload complete', "Okay", { duration: 5000 });
       }
+      
       if (res.type === HttpEventType.UploadProgress) {
         this.percentDone = Math.round(100 * res.loaded / res.total);
       }
-    })*/
+    })
+
   }
+
+
+  saveBulletin(){
+
+    console.log('dwadaw');
+  }
+
+
 }
